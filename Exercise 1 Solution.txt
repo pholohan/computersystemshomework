@@ -1,0 +1,1 @@
+tshark -r /vagrant/webserver-eth0-traffic4.pcap -Y http.request -T fields -e ip.src | sort | uniq -c | sort -n > /vagrant/ip_addresses.txt
