@@ -1,0 +1,8 @@
+Mac Address DBServer Eth1 08:00:27:e1:05:05
+
+#Command to Start tshark on interface eth1 on webserver and dump network traffic to webserver-eth1-traffic2.pcap
+tshark -w /vagrant/webserver-eth1-traffic2.pcap -i eth1 -f icmp >& /dev/null &
+
+#Command that uses webserver-eth1-traffic2.pcap to confirm that ethernet frames were received from dbserver using the MAC address.
+tshark -r /vagrant/webserver-eth1-traffic2.pcap -T fields -e ip -e eth | grep 08:00:27:e1:05:05
+
